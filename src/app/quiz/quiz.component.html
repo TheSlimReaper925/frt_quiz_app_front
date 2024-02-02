@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="card text-center shadow-lg p-4 rounded-lg" style="max-width: 500px; margin: auto;">
+    <div class="mb-3">
+      <p class="text-muted">Time remaining: {{ formatTime(timer) }}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="questionsSize">Select Questions Size:</label>
+      <select class="form-control" id="questionsSize" [(ngModel)]="selectedQuestionsSize">
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="questionType">Select Question Type:</label>
+      <select class="form-control" id="questionType" [(ngModel)]="selectedQuestionType">
+        <option value="binary">Binary</option>
+        <option value="multipleChoice">Multiple Choice</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-success rounded-0 mt-3 " (click)="saveChanges()">Save Changes</button>
+
+    <h5 class="card-title mb-3 mt-3">Quiz Question</h5>
+    <p class="card-text">{{ this.questions.questions[this.currentQuestionIndex].question }}</p>
+    <div *ngIf="this.questions.questions[this.currentQuestionIndex].answer == true" class="alert alert-success mb-3" role="alert">
+      Correct!
+    </div>
+    <div *ngIf="this.questions.questions[this.currentQuestionIndex].answer == false" class="alert alert-danger mb-3" role="alert">
+      incorrect! :(
+    </div>
+    <ul class="list-group list-group-flush" *ngIf="this.questions.questions[this.currentQuestionIndex].type === 'binary'">
+      <li class="list-group-item border border-gray-400 rounded-0" (click)="handleAnswerClick(this.questions.questions[this.currentQuestionIndex].id, true)">
+        <p href="" class="text-dark">
+          Yes
+        </p>
+      </li>
+      <li class="list-group-item border border-gray-400 rounded-0" (click)="handleAnswerClick(this.questions.questions[this.currentQuestionIndex].id, false)">
+        <p class="text-dark">
+          No
+        </p>
+      </li>
+    </ul>
+
+    <ul class="list-group list-group-flush" *ngIf="this.questions.questions[this.currentQuestionIndex].type === 'multipleChoice'">
+      <div *ngFor="let answer of this.questions.questions[this.currentQuestionIndex].answers">
+        <li class="list-group-item border border-gray-400 rounded-0" (click)="handleAnswerClick(this.questions.questions[this.currentQuestionIndex].id, answer.id)">
+          <p class="text-dark" >
+            {{answer.answer}}
+          </p>
+        </li>
+      </div>
+    </ul>
+
+    <div class="d-flex justify-content-between mt-4">
+      <button *ngIf="this.currentQuestionIndex > 0" type="button" class="btn btn-outline-secondary rounded-0" (click)="previousQuestion()">Previous</button>
+      <button *ngIf="this.currentQuestionIndex < this.questions.questions.length - 1" type="button" class="btn btn-primary rounded-0" (click)="nextQuestions()">Next</button>
+      <button *ngIf="this.currentQuestionIndex == this.questions.questions.length - 1" type="button" class="btn btn-primary rounded-0" (click)="submitResult()">Finish</button>
+    </div>
+  </div>
+</div>
+
+

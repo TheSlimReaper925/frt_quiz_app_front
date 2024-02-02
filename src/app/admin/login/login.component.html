@@ -1,0 +1,25 @@
+<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title text-center">Login</h2>
+
+        <div *ngIf="loginFailed" class="alert alert-danger mb-3" role="alert">
+          {{ loginFailed }}
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Your Email..." [(ngModel)]="email">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Your Password..." [(ngModel)]="password">
+        </div>
+
+        <button type="button" class="btn btn-primary d-block mx-auto" (click)="loginRequest()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<admin-header></admin-header>
+
+<!-- question-form.component.html -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div *ngIf="error" class="alert alert-danger mb-3" role="alert">
+        {{ error }}
+      </div>
+
+      <div class="form-group">
+        <label for="question">Question</label>
+        <input type="text" class="form-control" id="question" [(ngModel)]="question">
+      </div>
+
+      <div class="form-group">
+        <label for="questionType">Question Type</label>
+        <select class="form-control" id="questionType" [(ngModel)]="questionType" (change)="updateFormFields()">
+          <option value="1">Binary</option>
+          <option value="2">Multiple Choice</option>
+        </select>
+      </div>
+
+      <div *ngIf="questionType == 1">
+        <div class="form-group">
+          <label for="correctAnswer">Correct Answer</label>
+          <select class="form-control" id="correctAnswer" [(ngModel)]="correctAnswer">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="questionType == 2">
+        <div class="form-group">
+          <label for="answer1">Answer 1</label>
+          <input type="text" class="form-control" id="answer1" [(ngModel)]="answer1">
+        </div>
+
+        <div class="form-group">
+          <label for="answer2">Answer 2</label>
+          <input type="text" class="form-control" id="answer2" [(ngModel)]="answer2">
+        </div>
+
+        <div class="form-group">
+          <label for="answer3">Answer 3</label>
+          <input type="text" class="form-control" id="answer3" [(ngModel)]="answer3">
+        </div>
+
+        <div class="form-group">
+          <label for="correctAnswerSelector">Correct Answer</label>
+          <select class="form-control" id="correctAnswerSelector" [(ngModel)]="correctAnswer">
+            <option value="1">Answer 1</option>
+            <option value="2">Answer 2</option>
+            <option value="3">Answer 3</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-2" (click)="submitForm()">Submit</button>
+    </div>
+  </div>
+</div>

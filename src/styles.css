@@ -1,1 +1,22 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+.card-title {
+  font-size: 1.5rem; /* Adjust font size as needed */
+}
+
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+.answer {
+  margin-bottom: 10px;
+}
+
+.answer-btn {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #cccccc; /* Gray border */
+  color: #333333; /* Text color */
+  padding: 10px; /* Adjust padding as needed */
+}

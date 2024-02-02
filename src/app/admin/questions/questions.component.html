@@ -1,0 +1,46 @@
+<admin-header></admin-header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <a class="btn btn-primary col-md-4 mb-3" href="/admin/add-question">Add Question</a>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Question</th>
+          <th>Option 1</th>
+          <th>Option 2</th>
+          <th>Option 3</th>
+          <th>Correct Answer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let question of questions">
+          <td>{{ question.id }}</td>
+          <td>{{ question.question }}</td>
+
+          <ng-container *ngIf="question.type === 'binary'">
+            <td>Yes</td>
+            <td>No</td>
+            <td>-</td>
+            <td>{{ question.correct_answer ? 'Yes' : 'No' }}</td>
+          </ng-container>
+
+          <ng-container *ngIf="question.type === 'multipleChoice'">
+            <ng-container *ngFor="let answer of question.answers; let i = index">
+              <td>{{ answer?.answer }}</td>
+            </ng-container>
+
+            <!-- Display correct answer in the last cell -->
+            <td>{{ getCorrectAnswer(question.answers) }}</td>
+          </ng-container>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+

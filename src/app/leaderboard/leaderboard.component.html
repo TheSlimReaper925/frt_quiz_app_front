@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <a class="btn btn-primary col-md-4 mb-3" href="/">Try again!</a>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Score</th>
+          <th>Time taken</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let leader of leaderboard">
+          <td>{{ leader.name }}</td>
+          <td>{{ leader.email }}</td>
+          <td>{{ leader.score }}</td>
+          <td>{{ leader.time }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
