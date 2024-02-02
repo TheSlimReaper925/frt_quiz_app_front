@@ -43,7 +43,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: IndexComponent
+        component: ResponsesComponent
       },
       {
         path: 'add-question',
@@ -52,10 +52,6 @@ export const routes: Routes = [
       {
         path: 'questions',
         component: QuestionsComponent
-      },
-      {
-        path: 'responses',
-        component: ResponsesComponent
       }
     ]
   }

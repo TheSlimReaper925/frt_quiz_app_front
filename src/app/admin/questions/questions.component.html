@@ -28,12 +28,12 @@
           </ng-container>
 
           <ng-container *ngIf="question.type === 'multipleChoice'">
-            <ng-container *ngFor="let answer of question.answers; let i = index">
+            <ng-container *ngFor="let answer of question.answers_visible; let i = index">
               <td>{{ answer?.answer }}</td>
             </ng-container>
 
             <!-- Display correct answer in the last cell -->
-            <td>{{ getCorrectAnswer(question.answers) }}</td>
+            <td>{{ getCorrectAnswer(question.answers_visible) }}</td>
           </ng-container>
         </tr>
         </tbody>

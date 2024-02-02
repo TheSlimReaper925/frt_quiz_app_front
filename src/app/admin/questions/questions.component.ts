@@ -34,8 +34,8 @@ export class QuestionsComponent {
     )
   }
 
-  getCorrectAnswer(answers: any[]): string {
-    const correctAnswer = answers.find(answer => answer.is_correct == 1);
-    return correctAnswer ? correctAnswer.answer : 'test';
+  getCorrectAnswer(answersVisible: any[]): string {
+    const correctAnswer = answersVisible.find(answer => answer.is_correct == 1);
+    return correctAnswer ? correctAnswer.answer : "Can't find";
   }
 }
